@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Survey</title>
+    <style>
+        :root {
+            --outline: 2px solid #4CAF50;
+            --outline-hover: 2px solid #31978d;
+            --box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            --black: #333;
+            --light-color: #777;
+            --orange: #FF5722;
+        }
+
+        .features {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+.box-container {
+    max-width: 800px; 
+    background-color: #ff7800;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.bing.com/th/id/OGC.77ae6fa8c50173d941f6fb971b6de1a7?pid=1.7&rurl=https%3a%2f%2fi.pinimg.com%2foriginals%2f57%2f75%2fc2%2f5775c23d5c74805b4c5c7918edad042e.gif&ehk=vNbDvAX4bIIbm4fWGHrNR%2bl%2b6NU2Ayu7%2b%2bdNnjcRTGY%3d') no-repeat center center fixed; /* Replace with your GIF URL */
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .heading span {
+            display: inline-block; /* Ensure the span can have dimensions */
+            clip-path: polygon(100% 0, 93% 50%, 100% 100%, 0% 100%, 7% 50%, 0% 0%);
+            background: #ff7800;
+            padding: .5rem 3rem;
+            color: white;
+            font-size: 2.5rem; 
+        }
+
+        
+        .features .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .features .box-container .box {
+            background: #fff;
+            padding: 3rem 2rem;
+            outline: var(--outline);
+            outline-offset: -1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: outline-offset 0.3s ease-in;
+            
+        }
+     
+
+        .features .box-container .box:hover {
+            outline: var(--outline-hover);
+            --outline-dark: 4px solid #2E7D32; 
+    --outline-hover: 6px solid black;
+            outline-offset: 0rem;
+        }
+
+        .features .box-container .box img {
+            height: 15rem;
+            margin: 1rem 0;
+        }
+
+        .features .box-container .box h3 {
+            font-size: 3.5rem;
+            color: var(--black);
+            line-height: 1.8;
+        }
+
+        .features .box-container .box p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: var(--light-color);
+            padding: 1rem 0;
+        }
+
+        /* Form styling inside the box */
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            text-align: left;
+            
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+            font-size: 2.5rem;
+        }
+
+        select, input[type="submit"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff7800;;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 class="heading"><span>Grocery Survey</span></h1>
+
+    <div class="features">
+        <div class="box-container">
+            <div class="box">
+                <h3>Survey Form</h3>
+                <p>Help us improve our services by completing this quick survey.</p>
+
+                <!-- Form starts here -->
+                <form id="groceryForm">
+                    <!-- Radio buttons for selecting a category -->
+                    <p><strong>Which category of groceries do you prefer?</strong></p>
+                    <label><input type="radio" name="category" value="fruits" required> Fruits</label>
+                    <label><input type="radio" name="category" value="vegetables"> Vegetables</label>
+                    <label><input type="radio" name="category" value="dairy"> Dairy Products</label>
+
+                    <!-- Checkboxes for selecting grocery options -->
+                    <p><strong>Select the types of groceries you frequently buy:</strong></p>
+                    <label><input type="checkbox" name="grocery" value="organic"> Organic Products</label>
+                    <label><input type="checkbox" name="grocery" value="frozen"> Frozen Foods</label>
+                    <label><input type="checkbox" name="grocery" value="snacks"> Snacks</label>
+
+                    <!-- Dropdown list for quantity -->
+                    <p><strong>How many items do you usually buy?</strong></p>
+                    <select name="quantity" required>
+                        <option value="">Select</option>
+                        <option value="1-5">1-5</option>
+                        <option value="6-10">6-10</option>
+                        <option value="10+">10+</option>
+                    </select>
+
+                    <!-- Submit button -->
+                    <input type="submit" value="Submit">
+                </form>
+                <!-- Form ends here -->
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript validation for the form
+        document.getElementById('groceryForm').addEventListener('submit', function(event) {
+            const categorySelected = document.querySelector('input[name="category"]:checked');
+            const quantitySelected = document.querySelector('select[name="quantity"]').value;
+
+            if (!categorySelected || quantitySelected === "") {
+                event.preventDefault();
+                alert('Please complete all fields before submitting!');
+            } else {
+                alert('Form submitted successfully!');
+            }
+        });
+    </script>
+
+</body>
+</html>
